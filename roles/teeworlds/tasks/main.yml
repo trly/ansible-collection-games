@@ -9,7 +9,7 @@
   ansible.builtin.unarchive:
     src: "{{ teeworlds__server_url }}"
     remote_src: true
-    dest: "{{ teeworlds__install_dir }}/{{ teeworlds__version }}"
+    dest: "{{ teeworlds__install_dir }}"
 
 - name: link current version
   ansible.builtin.file:
