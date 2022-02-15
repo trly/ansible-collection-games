@@ -1,0 +1,11 @@
+- name: create teeworlds user
+  ansible.builtin.user:
+    create_home: true
+    home: "{{ teeworlds__install_dir }}"
+    name: "{{ teeworlds__user }}"
+    system: true
+
+- name: download teeworlds server
+  ansible.builtin.unarchive:
+    src: "{{ teeworlds__server_url }}"
+    dest: "{{ teeworlds__install_dir }}"
