@@ -2,6 +2,7 @@
 Description=teeworlds server
 
 [Service]
+WorkingDirectory={{ teeworlds__install_dir }}
 ExecStart="{{ teeworlds__install_dir }}/current/teeworlds_srv -f server.cfg"
 
 [Install]
