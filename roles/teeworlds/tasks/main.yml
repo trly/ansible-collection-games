@@ -15,7 +15,7 @@
 
 - name: link current version
   ansible.builtin.file:
-    src: "{{ teeworlds__install_dir }}/teeworlds-{{ teeworlds__version }}linux_x86_64"
+    src: "{{ teeworlds__install_dir }}/teeworlds-{{ teeworlds__version }}-linux_x86_64"
     dest: "{{ teeworlds__install_dir }}/current"
     owner: "{{ teeworlds__user }}"
     group: "{{ teeworlds__user }}"
