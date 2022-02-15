@@ -1,0 +1,5 @@
+- name: check required variables
+  fail:
+    msg: "required variable '{{ item }}' is not defined"
+  when: item not in vars
+  loop: "{{ teeworlds__required_vars }}"

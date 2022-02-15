@@ -1,0 +1,8 @@
+[Unit]
+Description=teeworlds server
+
+[Service]
+ExecStart="{{ teeworlds__install_dir }}/current/teeworlds_srv -f server.cfg"
+
+[Install]
+WantedBy=multi-user.target
