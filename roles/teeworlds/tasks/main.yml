@@ -8,4 +8,5 @@
 - name: download teeworlds server
   ansible.builtin.unarchive:
     src: "{{ teeworlds__server_url }}"
+    remote_src: true
     dest: "{{ teeworlds__install_dir }}"
