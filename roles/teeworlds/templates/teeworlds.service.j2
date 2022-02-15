@@ -2,8 +2,10 @@
 Description=teeworlds server
 
 [Service]
+User={{ teeworlds__user }}
+Group={{ teeworlds__user }}
 WorkingDirectory={{ teeworlds__install_dir }}
-ExecStart="{{ teeworlds__install_dir }}/current/teeworlds_srv -f server.cfg"
+ExecStart={{ teeworlds__install_dir }}/current/teeworlds_srv -f server.cfg
 
 [Install]
 WantedBy=multi-user.target
