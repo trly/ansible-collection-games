@@ -33,5 +33,7 @@
   ansible.builtin.template:
     src: teeworlds.cfg.j2
     dest: "{{ teeworlds__install_dir }}/current/server.cfg"
+    owner: "{{ teeworlds__user }}"
+    group: "{{ teeworlds__user }}"
   notify: restart teeworlds
   
