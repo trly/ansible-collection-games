@@ -9,12 +9,14 @@
   ansible.builtin.unarchive:
     src: "{{ teeworlds__server_url }}"
     remote_src: true
+    owner: "{{ teeworlds__user }}"
+    group: "{{ teeworlds__user }}"
     dest: "{{ teeworlds__install_dir }}"
 
 - name: link current version
   ansible.builtin.file:
-    src: "{{ teeworlds__install_dir }}/current"
-    dest: "{{ teeworlds__install_dir }}/{{ teeworlds__version }}"
-    owner: teeworlds
-    group: teeworlds
+    src: "{{ teeworlds__install_dir }}/teeworlds-{{ teeworlds__version }}linux_x86_64"
+    dest: "{{ teeworlds__install_dir }}/current"
+    owner: "{{ teeworlds__user }}"
+    group: "{{ teeworlds__user }}"
     state: link
