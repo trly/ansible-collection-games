@@ -1,0 +1,4 @@
+# {{ ansible_managed }}
+{% for option in teeworlds__server_cfg|dict2items %}
+{{ option.key }} {{ option.value }}
+{% endfor %}

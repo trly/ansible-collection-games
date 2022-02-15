@@ -1,0 +1,5 @@
+- name: restart teeworlds
+  ansible.builtin.service:
+    name: teeworlds
+    state: restarted
+    daemon_reload: true

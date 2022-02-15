@@ -1,0 +1,39 @@
+- include_tasks: validate.yml
+
+- name: create teeworlds user
+  ansible.builtin.user:
+    create_home: true
+    home: "{{ teeworlds__install_dir }}"
+    name: "{{ teeworlds__user }}"
+    system: true
+
+- name: download teeworlds server
+  ansible.builtin.unarchive:
+    src: "{{ teeworlds__server_url }}"
+    remote_src: true
+    owner: "{{ teeworlds__user }}"
+    group: "{{ teeworlds__user }}"
+    dest: "{{ teeworlds__install_dir }}"
+
+- name: link current version
+  ansible.builtin.file:
+    src: "{{ teeworlds__install_dir }}/teeworlds-{{ teeworlds__version }}-linux_x86_64"
+    dest: "{{ teeworlds__install_dir }}/current"
+    owner: "{{ teeworlds__user }}"
+    group: "{{ teeworlds__user }}"
+    state: link
+
+- name: install systemd unit
+  ansible.builtin.template:
+    src: teeworlds.service.j2
+    dest: /etc/systemd/system/teeworlds.service
+  notify: restart teeworlds
+
+- name: configure server
+  ansible.builtin.template:
+    src: teeworlds.cfg.j2
+    dest: "{{ teeworlds__install_dir }}/current/server.cfg"
+    owner: "{{ teeworlds__user }}"
+    group: "{{ teeworlds__user }}"
+  notify: restart teeworlds
+  

@@ -1,0 +1,4 @@
+teeworlds__version: 0.7.5
+teeworlds__server_url: "https://github.com/teeworlds/teeworlds/releases/download/{{ teeworlds__version }}/teeworlds-{{ teeworlds__version }}-linux_x86_64.tar.gz"
+teeworlds__install_dir: "/opt/teeworlds"
+teeworlds__user: teeworlds
